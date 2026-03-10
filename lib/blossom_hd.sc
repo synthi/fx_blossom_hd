@@ -1,4 +1,4 @@
-FxBlossom : FxBase {
+FxBlossom_hd : FxBase {
 
     *new { 
         var ret = super.newCopyArgs(nil, \none, (
@@ -17,15 +17,15 @@ FxBlossom : FxBase {
     }
 
     subPath {
-        ^"/fx_blossom";
+        ^"/fx_blossom_hd";
     }  
 
     symbol {
-        ^\fxBlossom;
+        ^\fxBlossom_hd;
     }
 
     addSynthdefs {
-        SynthDef(\fxBlossom, { |inBus, outBus|
+        SynthDef(\fxBlossom_hd, { |inBus, outBus|
             // ========================================================================
             // FASE 1: DECLARACIÓN ABSOLUTA DE VARIABLES (DIRECTIVA DE SINTAXIS ESTRICTA)
             // ========================================================================
