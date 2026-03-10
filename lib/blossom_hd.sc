@@ -88,8 +88,8 @@ FxBlossom_hd : FxBase {
             // El canal R tiene un offset fijo de 541 muestras (11.27ms).
             // Esto vacía el centro estéreo y abraza al oyente inmediatamente.
             // Se usa DelayC (Cúbico) para permitir manipulación en vivo (Efecto Doppler).
-            predelay_l = DelayC.ar(input[0], 1.5, predelay_kr) * 0.25; // attenuation
-            predelay_r = DelayC.ar(input[1], 1.5, predelay_kr + 0.0112708) * 0.25; 
+            predelay_l = DelayC.ar(input[0], 1.5, predelay_kr) * 0.1; // attenuation
+            predelay_r = DelayC.ar(input[1], 1.5, predelay_kr + 0.0112708) * 0.1; 
 
             // --- BLOQUE D: EL TANQUE (14 COMB FILTERS MODULADOS) ---
             // Generación de densidad modal masiva. Cada Comb tiene su propio LFO independiente.
@@ -113,8 +113,8 @@ FxBlossom_hd : FxBase {
             cross_r = combs_r + (combs_l * 0.2);
             // NUEVO: Baffle Acústico (Filtro Pasa-Altos suave a 60Hz)
             // Limpia la masa de graves del tanque antes de que entre a la etapa de difusión (Bloom)
-            cross_l = HPF.ar(cross_l, 80);
-            cross_r = HPF.ar(cross_r, 80);
+            cross_l = HPF.ar(cross_l, 60);
+            cross_r = HPF.ar(cross_r, 60);
             
 
             // --- BLOQUE F: DIFUSIÓN PROFUNDA (BLOOM) ---
@@ -143,8 +143,8 @@ FxBlossom_hd : FxBase {
             // 3. .tanh: Saturación analógica suave (Soft-Clipper).
             // 4. * 3.333: Makeup Gain exacto para restaurar el volumen (Equal Gain).
             // 5. .softclip: Muro de contención final para proteger los conversores D/A.
-            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.1).tanh * 2.8).softclip;
-            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.1).tanh * 2.8).softclip;
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.05).tanh * 3.6).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.05).tanh * 3.6).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
