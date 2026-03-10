@@ -46,8 +46,9 @@ local FxBlossom_hd = fx:new{
 -- ASIGNACIÓN DE PARÁMETROS A LA UI DE NORNS (FASE 2)
 -- ========================================================================
 function FxBlossom_hd:add_params()
+    params:add_separator("fx_blossom", "fx blossom")
     -- Agrupamos los 7 parámetros bajo un solo menú colapsable para mantener la UI limpia
-    params:add_group("fx_blossom_hd", "fx blossom_hd", 7)
+    params:add_group("fx_blossom_hd", "fx blossom_hd", 8)
     
     -- Slot de ruteo (none, sendA, sendB, insert)
     FxBlossom_hd:add_slot("fx_blossom_hd_slot", "slot")
