@@ -143,8 +143,8 @@ FxBlossom_hd : FxBase {
             // 3. .tanh: Saturación analógica suave (Soft-Clipper).
             // 4. * 3.333: Makeup Gain exacto para restaurar el volumen (Equal Gain).
             // 5. .softclip: Muro de contención final para proteger los conversores D/A.
-            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.05).tanh * 3.6).softclip;
-            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.05).tanh * 3.6).softclip;
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.05).tanh * 4.8).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.05).tanh * 4.8).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
